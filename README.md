@@ -14,9 +14,7 @@
 
 ### 加入我们
 
-<img src="https://github.com/YuYingTechnology/django-vue-admin/blob/main/images/qq.png?raw=true" width="25%" height="25%">
-
-<img src="https://github.com/YuYingTechnology/django-vue-admin/blob/main/images/wechat.png?raw=true" width="25%" height="25%">
+<img src="https://github.com/YuYingTechnology/django-vue-admin/blob/main/images/qq.png?raw=true" width="25%" height="25%"><img src="https://github.com/YuYingTechnology/django-vue-admin/blob/main/images/wechat.png?raw=true" width="25%" height="25%">
 
 ### 食用方法
 #### 拉取代码

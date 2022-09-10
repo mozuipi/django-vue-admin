@@ -2,7 +2,7 @@
 
 ### 项目介绍
 1. 基于 **django-rest-framework** + **vue2** + **element ui**
-2. 支持企业微信扫码登录
+2. 支持 **企业微信扫码登录**
 3. 前端框架 [https://github.com/PanJiaChen/vue-admin-template/tree/permission-control](https://github.com/PanJiaChen/vue-admin-template/tree/permission-control)
 4. 开发环境
 ```

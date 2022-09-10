@@ -1,4 +1,5 @@
 import { login, logout, getInfo } from '@/api/user'
+import { wechatLogin } from '@/api/wechat'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import { resetRouter } from '@/router'
 
@@ -50,6 +51,22 @@ const actions = {
     })
   },
 
+  wechatLogin({ commit }, wechatInfo) {
+    return new Promise((resolve, reject) => {
+      wechatLogin(wechatInfo).then(response => {
+        console.log('wechatLogin====================', response)
+        const { data } = response
+        const token = data.access
+        console.log(token)
+        commit('SET_TOKEN', token)
+        setToken(token)
+        resolve()
+      }).catch(error => {
+        reject(error)
+      })
+    })
+  },
+
   // get user info
   getInfo({ commit, state }) {
     console.log('getInfo=================', commit, state)
@@ -83,14 +100,18 @@ const actions = {
   // user logout
   logout({ commit, state }) {
     return new Promise((resolve, reject) => {
-      logout(state.token).then(() => {
-        removeToken() // must remove  token  first
-        resetRouter()
-        commit('RESET_STATE')
-        resolve()
-      }).catch(error => {
-        reject(error)
-      })
+      removeToken() // must remove  token  first
+      resetRouter()
+      commit('RESET_STATE')
+      resolve()
+      // logout(state.token).then(() => {
+      //   removeToken() // must remove  token  first
+      //   resetRouter()
+      //   commit('RESET_STATE')
+      //   resolve()
+      // }).catch(error => {
+      //   reject(error)
+      // })
     })
   },
 

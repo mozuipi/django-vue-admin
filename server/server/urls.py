@@ -14,20 +14,29 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import (
+    path,
+    include,
+)
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
 from rest_framework import routers
-from oAuth.views import UserInfoViewSet
+from oAuth.views import (
+    UserInfoViewSet,
+    WechatTokenObtainPairView,
+    QRcodeViewSet,
+)
 
 router_V1 = routers.DefaultRouter()
 router_V1.register('info', UserInfoViewSet)
+router_V1.register('wechat/qrcode', QRcodeViewSet)
 
 urlpatterns = [
     path('api/', include(router_V1.urls)),
     path('admin/', admin.site.urls),
     path('api/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/wechat/login/', WechatTokenObtainPairView.as_view(), name='wechat_token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]

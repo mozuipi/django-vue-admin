@@ -43,10 +43,18 @@
 
       <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">登录</el-button>
 
-      <!-- <div class="tips">
-        <span style="margin-right:20px;">username: admin</span>
-        <span> password: any</span>
-      </div> -->
+      <el-divider></el-divider>
+      
+      <el-popover
+        placement="top"
+        trigger="hover">
+        <!-- <iframe style="height: 380px; text-align: center;" src="https://open.work.weixin.qq.com/wwopen/sso/qrConnect?appid=wxaf107f5ababc0f0c&agentid=1&redirect_uri=https%3A%2F%2Fwechat.huoxingxiaoliu.com%2F%23%2Fwechat%2Flogin&state=django-vue-admin#wechat_redirect" frameborder="0"></iframe> -->
+        <p v-if="wechat_qr_code_url == ''">请在后台设置企业微信管理信息</p>
+        <iframe v-else style="height: 380px; text-align: center;" :src="wechat_qr_code_url" frameborder="0"></iframe>
+        <el-button slot="reference" style="background-color: transparent; border: none">
+          <img style="width: 60px; height: 60px;" src="../../assets/images/wechat.png">
+        </el-button>
+      </el-popover>
 
     </el-form>
   </div>
@@ -54,6 +62,7 @@
 
 <script>
 import { validUsername } from '@/utils/validate'
+import { getWechatQRCode } from '@/api/wechat'
 
 export default {
   name: 'Login',
@@ -83,8 +92,13 @@ export default {
       },
       loading: false,
       passwordType: 'password',
-      redirect: undefined
+      redirect: undefined,
+      wechatDialogVisible: false,
+      wechat_qr_code_url: ''
     }
+  },
+  created(){
+    this.getWechatQRCode()
   },
   watch: {
     $route: {
@@ -95,6 +109,14 @@ export default {
     }
   },
   methods: {
+    getWechatQRCode() {
+      getWechatQRCode().then(response => {
+        console.log('getWechatQRCode=================', response)
+        if(response.data){
+          this.wechat_qr_code_url = response.data['wechat_qr_code_url']
+        }
+      })
+    },
     showPwd() {
       if (this.passwordType === 'password') {
         this.passwordType = ''
@@ -233,5 +255,8 @@ $light_gray:#eee;
     cursor: pointer;
     user-select: none;
   }
+}
+.el-dialog .dialogClass {
+  height: 1000px;
 }
 </style>

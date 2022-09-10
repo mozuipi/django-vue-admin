@@ -8,6 +8,7 @@
 操作系统： macOS Monterey
 前端环境： Node v16.15.1 (Npm v8.11.0)
 后端环境： Python 3.10
+数据库：   Mysql 8.0.24
 开发工具： Pycharm
 ```
 
@@ -62,4 +63,9 @@ npm run dev
 cd django-vue-admin/server/
 pip install -r requirements.txt
 python manager.py runserver
+```
+### 访问
+```
+浏览器打开
+http://localhost
 ```

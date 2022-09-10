@@ -14,5 +14,3 @@ tests/**/coverage/
 *.ntvs*
 *.njsproj
 *.sln
-server/.idea
-migrations

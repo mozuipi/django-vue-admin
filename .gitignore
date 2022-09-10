@@ -27,6 +27,9 @@ share/python-wheels/
 *.egg
 MANIFEST
 
+server/.idea
+migrations
+
 # PyInstaller
 #  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
@@ -127,3 +130,4 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+server/.idea/inspectionProfiles/profiles_settings.xml

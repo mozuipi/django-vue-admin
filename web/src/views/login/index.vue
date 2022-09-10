@@ -48,7 +48,6 @@
       <el-popover
         placement="top"
         trigger="hover">
-        <!-- <iframe style="height: 380px; text-align: center;" src="https://open.work.weixin.qq.com/wwopen/sso/qrConnect?appid=wxaf107f5ababc0f0c&agentid=1&redirect_uri=https%3A%2F%2Fwechat.huoxingxiaoliu.com%2F%23%2Fwechat%2Flogin&state=django-vue-admin#wechat_redirect" frameborder="0"></iframe> -->
         <p v-if="wechat_qr_code_url == ''">请在后台设置企业微信管理信息</p>
         <iframe v-else style="height: 380px; text-align: center;" :src="wechat_qr_code_url" frameborder="0"></iframe>
         <el-button slot="reference" style="background-color: transparent; border: none">

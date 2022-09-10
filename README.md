@@ -2,8 +2,9 @@
 
 ### 项目介绍
 1. 基于 **django-rest-framework** + **vue2** + **element ui**
-2. 前端框架 [https://github.com/PanJiaChen/vue-admin-template/tree/permission-control](https://github.com/PanJiaChen/vue-admin-template/tree/permission-control)
-3. 开发环境
+2. 支持企业微信扫码登录
+3. 前端框架 [https://github.com/PanJiaChen/vue-admin-template/tree/permission-control](https://github.com/PanJiaChen/vue-admin-template/tree/permission-control)
+4. 开发环境
 ```
 操作系统： macOS Monterey
 前端环境： Node v16.15.1 (Npm v8.11.0)
@@ -15,6 +16,7 @@
 ### 加入我们
 
 <img src="https://github.com/YuYingTechnology/django-vue-admin/blob/main/images/qq.png?raw=true" width="25%" height="25%"><img src="https://github.com/YuYingTechnology/django-vue-admin/blob/main/images/wechat.png?raw=true" width="28%" height="28%">
+<img src="https://github.com/YuYingTechnology/django-vue-admin/blob/main/images/wechat-login.png?raw=true" width="28%" height="28%">
 
 ### 食用方法
 #### 拉取代码

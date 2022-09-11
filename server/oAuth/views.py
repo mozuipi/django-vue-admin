@@ -46,26 +46,29 @@ class QRcodeViewSet(viewsets.ViewSet):
 
     def list(self, request, *args, **kwargs):
         dingtalk_manager_info = DingTalkManager.objects.all()
-        wechat_redirect_uri = quote(request.META['HTTP_DOMAIN'] + '/wechat/login', safe='')
-        dingtalk_redirect_uri = quote(request.META['HTTP_DOMAIN'] + '/dingtalk/login', safe='')
         data = {
             'wechat_qr_code_url': '',
             'dingtalk_qr_code_url': ''
         }
-        # dingtalk_qr_code_url: 'https://login.dingtalk.com/oauth2/challenge.htm?redirect_uri=https%3A%2F%2Fwechat.huoxingxiaoliu.com%2Fdingtalk%2Flogin&response_type=code&client_id=dingp26p2zhj5cyh2odk&scope=openid&state=DingTalk&prompt=consent'
-        if self.queryset.exists():
-            wechat_manager_info = self.queryset.values()[0]
-            wechat_qr_code_url = 'https://open.work.weixin.qq.com/wwopen/sso/qrConnect?appid=%s&agentid=%s&redirect_uri=%s&state=Wechat#wechat_redirect' %(wechat_manager_info['appid'], wechat_manager_info['agentid'], wechat_redirect_uri)
-            # dingtalk_qr_code_url = 'https://login.dingtalk.com/oauth2/challenge.htm?redirect_uri=%s&response_type=code&client_id=%s&scope=openid&state=DingTalk&prompt=consent' % (wechat_manager_info['appid'], wechat_)
-            # return Response({'wechat_qr_code_url': wechat_qr_code_url}, status=200)
-            data['wechat_qr_code_url'] = wechat_qr_code_url
+        try:
+            wechat_redirect_uri = quote(request.META['HTTP_DOMAIN'] + '/wechat/login', safe='')
+            dingtalk_redirect_uri = quote(request.META['HTTP_DOMAIN'] + '/dingtalk/login', safe='')
+            # dingtalk_qr_code_url: 'https://login.dingtalk.com/oauth2/challenge.htm?redirect_uri=https%3A%2F%2Fwechat.huoxingxiaoliu.com%2Fdingtalk%2Flogin&response_type=code&client_id=dingp26p2zhj5cyh2odk&scope=openid&state=DingTalk&prompt=consent'
+            if self.queryset.exists():
+                wechat_manager_info = self.queryset.values()[0]
+                wechat_qr_code_url = 'https://open.work.weixin.qq.com/wwopen/sso/qrConnect?appid=%s&agentid=%s&redirect_uri=%s&state=Wechat#wechat_redirect' %(wechat_manager_info['appid'], wechat_manager_info['agentid'], wechat_redirect_uri)
+                # dingtalk_qr_code_url = 'https://login.dingtalk.com/oauth2/challenge.htm?redirect_uri=%s&response_type=code&client_id=%s&scope=openid&state=DingTalk&prompt=consent' % (wechat_manager_info['appid'], wechat_)
+                # return Response({'wechat_qr_code_url': wechat_qr_code_url}, status=200)
+                data['wechat_qr_code_url'] = wechat_qr_code_url
 
-        if dingtalk_manager_info.exists():
-            dingtalk_manager_info = dingtalk_manager_info[0]
-            dingtalk_qr_code_url = 'https://login.dingtalk.com/oauth2/challenge.htm?redirect_uri=%s&response_type=code&client_id=%s&scope=openid&state=DingTalk&prompt=consent' % (dingtalk_redirect_uri, dingtalk_manager_info.client_id)
-            data['dingtalk_qr_code_url'] = dingtalk_qr_code_url
+            if dingtalk_manager_info.exists():
+                dingtalk_manager_info = dingtalk_manager_info[0]
+                dingtalk_qr_code_url = 'https://login.dingtalk.com/oauth2/challenge.htm?redirect_uri=%s&response_type=code&client_id=%s&scope=openid&state=DingTalk&prompt=consent' % (dingtalk_redirect_uri, dingtalk_manager_info.client_id)
+                data['dingtalk_qr_code_url'] = dingtalk_qr_code_url
 
-        return Response(data, status=200)
+            return Response(data, status=200)
+        except Exception as e:
+            return Response(data, status=200)
 
 class CheckViewSet(viewsets.ViewSet):
     queryset = WechatManager.objects.all()

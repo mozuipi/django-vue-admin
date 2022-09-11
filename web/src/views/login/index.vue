@@ -64,6 +64,14 @@
           <img style="width: 60px; height: 60px;" src="../../assets/images/dingtalk.png">
         </el-button>
       </el-popover>
+      <el-popover
+        placement="top"
+        trigger="hover">
+        <p>加班开发中</p>
+        <el-button slot="reference" style="background-color: transparent; border: none">
+          <img style="width: 50px; height: 50px;" src="../../assets/images/feishu.png">
+        </el-button>
+      </el-popover>
 
     </el-form>
   </div>

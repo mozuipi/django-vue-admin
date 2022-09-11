@@ -20,7 +20,7 @@
 
 ### 项目截图
 
-<img src="https://github.com/YuYingTechnology/django-vue-admin/blob/main/images/wechat-login.png?raw=true" width="53%" height="53%">
+<img src="https://github.com/YuYingTechnology/django-vue-admin/blob/main/images/login.png?raw=true" width="53%" height="53%">
 
 ### 食用方法
 #### 拉取代码

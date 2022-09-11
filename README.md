@@ -3,8 +3,10 @@
 ### 项目介绍
 1. 基于 **django-rest-framework** + **vue2** + **element ui**
 2. 支持 **企业微信扫码登录**
-3. 前端框架 [https://github.com/PanJiaChen/vue-admin-template/tree/permission-control](https://github.com/PanJiaChen/vue-admin-template/tree/permission-control)
-4. 开发环境
+3. 支持 **钉钉扫码登录**
+4. 正在开发 **飞书扫码登录**
+5. 前端框架 [https://github.com/PanJiaChen/vue-admin-template/tree/permission-control](https://github.com/PanJiaChen/vue-admin-template/tree/permission-control)
+6. 开发环境
 ```
 操作系统： macOS Monterey
 前端环境： Node v16.15.1 (Npm v8.11.0)
@@ -17,16 +19,17 @@
 
 <img src="https://github.com/YuYingTechnology/django-vue-admin/blob/main/images/qq.png?raw=true" width="25%" height="25%"><img src="https://github.com/YuYingTechnology/django-vue-admin/blob/main/images/wechat.png?raw=true" width="28%" height="28%">
 
-
 ### 项目截图
 
 <img src="https://github.com/YuYingTechnology/django-vue-admin/blob/main/images/login.png?raw=true" width="53%" height="53%">
 
 ### 食用方法
+
 #### 拉取代码
 ```shell
 git clone https://github.com/YuYingTechnology/django-vue-admin.git
 ```
+
 #### openresty（nginx） 实现前后端分离
 ```conf
 server {
@@ -65,18 +68,21 @@ server {
     }
 
 ```
+
 #### 前端
 ```shell
 cd django-vue-admin/web/
 npm install
 npm run dev
 ```
+
 #### 后端
 ```shell
 cd django-vue-admin/server/
 pip install -r requirements.txt
 python manager.py runserver
 ```
+
 ### 访问
 ```
 浏览器打开

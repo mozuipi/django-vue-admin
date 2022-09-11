@@ -1,8 +1,8 @@
 <template>
   <div>
-    {{ loginForm.code }}
+    <!-- {{ loginForm.code }}
     {{ loginForm.state }}
-    {{ loginForm.appid }}
+    {{ loginForm.appid }} -->
   </div>
 </template>
 
@@ -17,7 +17,6 @@
                     state: this.$route.query.state,
                     appid: this.$route.query.appid,
                 },
-                listLoading: true
             }
         },
         mounted() {

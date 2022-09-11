@@ -54,6 +54,16 @@
           <img style="width: 60px; height: 60px;" src="../../assets/images/wechat.png">
         </el-button>
       </el-popover>
+      
+      <el-popover
+        placement="top"
+        trigger="hover">
+        <p v-if="wechat_qr_code_url == ''">请在后台设置钉钉管理信息</p>
+        <iframe v-else style="height: 450px; text-align: center;" :src="dingtalk_qr_code_url" frameborder="0"></iframe>
+        <el-button slot="reference" style="background-color: transparent; border: none">
+          <img style="width: 60px; height: 60px;" src="../../assets/images/dingtalk.png">
+        </el-button>
+      </el-popover>
 
     </el-form>
   </div>
@@ -93,7 +103,8 @@ export default {
       passwordType: 'password',
       redirect: undefined,
       wechatDialogVisible: false,
-      wechat_qr_code_url: ''
+      wechat_qr_code_url: '',
+      dingtalk_qr_code_url: ''
     }
   },
   created(){
@@ -113,6 +124,7 @@ export default {
         console.log('getWechatQRCode=================', response)
         if(response.data){
           this.wechat_qr_code_url = response.data['wechat_qr_code_url']
+          this.dingtalk_qr_code_url = response.data['dingtalk_qr_code_url']
         }
       })
     },
@@ -208,7 +220,7 @@ $light_gray:#eee;
     position: relative;
     width: 520px;
     max-width: 100%;
-    padding: 160px 35px 0;
+    padding: 210px 35px 0;
     margin: 0 auto;
     overflow: hidden;
   }

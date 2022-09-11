@@ -27,6 +27,7 @@ from oAuth.views import (
     UserInfoViewSet,
     WechatTokenObtainPairView,
     QRcodeViewSet,
+    CheckViewSet,
 )
 
 router_V1 = routers.DefaultRouter()
@@ -38,5 +39,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/wechat/login/', WechatTokenObtainPairView.as_view(), name='wechat_token_obtain_pair'),
+    path('api/dingtalk/login/', WechatTokenObtainPairView.as_view(), name='wechat_token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]

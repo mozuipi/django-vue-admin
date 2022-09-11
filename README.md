@@ -40,7 +40,7 @@ server {
 
         location / {
             root   /tmp;
-	    proxy_pass http://127.0.0.1:9528;   # 与npm run dev 后的端口保持一致
+	        proxy_pass http://127.0.0.1:9528;   # 与npm run dev 后的端口保持一致
             index  index.html index.htm;
         }
 
@@ -48,6 +48,9 @@ server {
         location /api {
             root   html;
             index  index.html index.htm;
+            proxy_set_header  Host  $host;
+            proxy_set_header  X-real-ip $remote_addr;
+            proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_pass http://127.0.0.1:8000;
         }
 

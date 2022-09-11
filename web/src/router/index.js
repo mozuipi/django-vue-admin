@@ -41,6 +41,11 @@ export const constantRoutes = [
     component: () => import('@/views/login/wechat'),
     hidden: true
   },
+  {
+    path: '/dingtalk/login',
+    component: () => import('@/views/login/dingtalk'),
+    hidden: true
+  },
 
   {
     path: '/404',
@@ -175,7 +180,7 @@ export const asyncRoutes = [
 ]
 
 const createRouter = () => new Router({
-  // mode: 'history', // require service support
+  mode: 'history', // require service support
   scrollBehavior: () => ({ y: 0 }),
   routes: constantRoutes
 })

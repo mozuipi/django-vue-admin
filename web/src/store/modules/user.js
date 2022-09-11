@@ -1,5 +1,6 @@
 import { login, logout, getInfo } from '@/api/user'
 import { wechatLogin } from '@/api/wechat'
+import { dingTalkLogin } from '@/api/dingTalk'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import { resetRouter } from '@/router'
 
@@ -54,7 +55,22 @@ const actions = {
   wechatLogin({ commit }, wechatInfo) {
     return new Promise((resolve, reject) => {
       wechatLogin(wechatInfo).then(response => {
-        console.log('wechatLogin====================', response)
+        const { data } = response
+        const token = data.access
+        console.log(token)
+        commit('SET_TOKEN', token)
+        setToken(token)
+        resolve()
+      }).catch(error => {
+        reject(error)
+      })
+    })
+  },
+
+  dingTalkLogin({ commit }, dingTalkInfo) {
+    return new Promise((resolve, reject) => {
+      dingTalkLogin(dingTalkInfo).then(response => {
+        console.log('dingTalkLogin================', response)
         const { data } = response
         const token = data.access
         console.log(token)
@@ -69,10 +85,8 @@ const actions = {
 
   // get user info
   getInfo({ commit, state }) {
-    console.log('getInfo=================', commit, state)
     return new Promise((resolve, reject) => {
       getInfo(state.token).then(response => {
-        console.log('response================', response)
         const { data } = response
 
         if (!data) {
@@ -91,8 +105,7 @@ const actions = {
         commit('SET_AVATAR', avatar)
         resolve(data)
       }).catch(error => {
-        console.log('error===========', error)
-        // reject(error)
+        reject(error)
       })
     })
   },

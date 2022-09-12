@@ -26,8 +26,9 @@ from rest_framework import routers
 from oAuth.views import (
     UserInfoViewSet,
     WechatTokenObtainPairView,
+    DingTalkTokenObtainPairView,
+    FeiShuTokenObtainPairView,
     QRcodeViewSet,
-    CheckViewSet,
 )
 
 router_V1 = routers.DefaultRouter()
@@ -39,6 +40,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/wechat/login/', WechatTokenObtainPairView.as_view(), name='wechat_token_obtain_pair'),
-    path('api/dingtalk/login/', WechatTokenObtainPairView.as_view(), name='wechat_token_obtain_pair'),
+    path('api/dingtalk/login/', DingTalkTokenObtainPairView.as_view(), name='ding_talk_token_obtain_pair'),
+    path('api/feishu/login/', FeiShuTokenObtainPairView.as_view(), name='fei_shu_token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]

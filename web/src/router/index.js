@@ -36,14 +36,22 @@ export const constantRoutes = [
     component: () => import('@/views/login/index'),
     hidden: true
   },
+
   {
     path: '/wechat/login',
     component: () => import('@/views/login/wechat'),
     hidden: true
   },
+
   {
     path: '/dingtalk/login',
     component: () => import('@/views/login/dingtalk'),
+    hidden: true
+  },
+
+  {
+    path: '/feishu/login',
+    component: () => import('@/views/login/feishu'),
     hidden: true
   },
 

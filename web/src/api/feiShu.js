@@ -1,8 +1,8 @@
 import request from '@/utils/request'
 
-export function dingTalkLogin(data) {
+export function feiShuLogin(data) {
   return request({
-    url: '/dingtalk/login/',
+    url: '/feishu/login/',
     method: 'post',
     data
   })

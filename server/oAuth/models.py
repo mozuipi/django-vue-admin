@@ -15,8 +15,9 @@ class NewUser(AbstractUser):
 
     roles = models.IntegerField(verbose_name='角色', choices=role_type, default=1)
     last_login = models.DateTimeField(_('last login'), blank=True, null=True, auto_now=True)
-    wechat = models.ForeignKey('WeChat', null=True, blank=True, on_delete=models.SET_NULL)
+    wechat = models.ForeignKey('Wechat', null=True, blank=True, on_delete=models.SET_NULL)
     dingtalk = models.ForeignKey('DingTalk', null=True, blank=True, on_delete=models.SET_NULL)
+    feishu = models.ForeignKey('FeiShu', null=True, blank=True, on_delete=models.SET_NULL)
 
     objects = UserManager()
 
@@ -66,3 +67,26 @@ class DingTalkManager(models.Model):
 
     class Meta:
         verbose_name_plural = "钉钉管理信息（钉钉登录必填）"
+
+class FeiShu(models.Model):
+    name = models.CharField(verbose_name='飞书昵称', max_length=200, unique=True)
+    en_name = models.CharField(verbose_name='飞书英文昵称', max_length=200, unique=True)
+    union_id = models.CharField(verbose_name='飞书union_id', max_length=200, unique=True)
+    open_id = models.CharField(verbose_name='飞书open_id', max_length=200, unique=True)
+    avatar_big = models.CharField(verbose_name='飞书头像', max_length=200, unique=True)
+
+    def __str__(self):
+        return str(self.id) + '---' + self.name + '---' + self.en_name + '---' + self.open_id
+
+    class Meta:
+        verbose_name_plural = "用户的飞书信息"
+
+class FeiShuManager(models.Model):
+    app_id = models.CharField(verbose_name='飞书应用id', max_length=99, unique=True)
+    app_secret = models.CharField(verbose_name='飞书应用secret', max_length=99, unique=True)
+
+    def __str__(self):
+        return str(self.id) + '---' + self.app_id + '---' + self.app_secret
+
+    class Meta:
+        verbose_name_plural = "飞书管理信息（飞书登录必填）"

@@ -6,7 +6,9 @@ from oAuth.models import (
     Wechat,
     WechatManager,
     DingTalk,
-    DingTalkManager
+    DingTalkManager,
+    FeiShu,
+    FeiShuManager,
 )
 
 # Register your models here.
@@ -51,3 +53,14 @@ class DingTalkManagerAdmin(admin.ModelAdmin):
     list_display_links = ('id', 'client_id', 'clientSecret')
 
 admin.site.register(DingTalkManager, DingTalkManagerAdmin)
+
+class FeiShuAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'en_name', 'union_id', 'open_id', 'avatar_big')
+    list_display_links = ('id', 'name', 'en_name', 'union_id', 'open_id', 'avatar_big')
+
+admin.site.register(FeiShu, FeiShuAdmin)
+class FeiShuManagerAdmin(admin.ModelAdmin):
+    list_display = ('id', 'app_id', 'app_secret')
+    list_display_links = ('id', 'app_id', 'app_secret')
+
+admin.site.register(FeiShuManager, FeiShuManagerAdmin)

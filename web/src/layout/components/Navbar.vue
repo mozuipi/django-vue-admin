@@ -12,11 +12,11 @@
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown">
-          <router-link to="/">
+          <!-- <router-link to="/">
             <el-dropdown-item>
               首页
             </el-dropdown-item>
-          </router-link>
+          </router-link> -->
           <a target="_blank" href="https://space.bilibili.com/439068477">
             <el-dropdown-item>火星小刘的B站</el-dropdown-item>
           </a>

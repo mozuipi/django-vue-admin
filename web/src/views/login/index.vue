@@ -47,7 +47,7 @@
       
       <el-popover
         placement="top"
-        trigger="hover">
+        trigger="click">
         <p v-if="wechat_qr_code_url == ''">请在后台设置企业微信管理信息</p>
         <iframe v-else style="height: 380px; text-align: center;" :src="wechat_qr_code_url" frameborder="0"></iframe>
         <el-button slot="reference" style="background-color: transparent; border: none">
@@ -57,7 +57,7 @@
       
       <el-popover
         placement="top"
-        trigger="hover">
+        trigger="click">
         <p v-if="wechat_qr_code_url == ''">请在后台设置钉钉管理信息</p>
         <iframe v-else style="height: 450px; text-align: center;" :src="dingtalk_qr_code_url" frameborder="0"></iframe>
         <el-button slot="reference" style="background-color: transparent; border: none">
@@ -66,8 +66,9 @@
       </el-popover>
       <el-popover
         placement="top"
-        trigger="hover">
-        <p>加班开发中</p>
+        trigger="click">
+        <p v-if="feishu_qr_code_url == ''">请在后台设置飞书管理信息</p>
+        <iframe v-else style="height: 450px; text-align: center;" :src="feishu_qr_code_url" frameborder="0"></iframe>
         <el-button slot="reference" style="background-color: transparent; border: none">
           <img style="width: 50px; height: 50px;" src="../../assets/images/feishu.png">
         </el-button>
@@ -112,7 +113,8 @@ export default {
       redirect: undefined,
       wechatDialogVisible: false,
       wechat_qr_code_url: '',
-      dingtalk_qr_code_url: ''
+      dingtalk_qr_code_url: '',
+      feishu_qr_code_url: ''
     }
   },
   created(){
@@ -133,6 +135,7 @@ export default {
         if(response.data){
           this.wechat_qr_code_url = response.data['wechat_qr_code_url']
           this.dingtalk_qr_code_url = response.data['dingtalk_qr_code_url']
+          this.feishu_qr_code_url = response.data['feishu_qr_code_url']
         }
       })
     },

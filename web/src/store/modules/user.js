@@ -1,6 +1,7 @@
 import { login, logout, getInfo } from '@/api/user'
 import { wechatLogin } from '@/api/wechat'
 import { dingTalkLogin } from '@/api/dingTalk'
+import { feiShuLogin } from '@/api/feiShu'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import { resetRouter } from '@/router'
 
@@ -42,7 +43,6 @@ const actions = {
         console.log(response)
         const { data } = response
         const token = data.access
-        console.log(token)
         commit('SET_TOKEN', token)
         setToken(token)
         resolve()
@@ -57,7 +57,6 @@ const actions = {
       wechatLogin(wechatInfo).then(response => {
         const { data } = response
         const token = data.access
-        console.log(token)
         commit('SET_TOKEN', token)
         setToken(token)
         resolve()
@@ -73,7 +72,22 @@ const actions = {
         console.log('dingTalkLogin================', response)
         const { data } = response
         const token = data.access
-        console.log(token)
+        commit('SET_TOKEN', token)
+        setToken(token)
+        resolve()
+      }).catch(error => {
+        reject(error)
+      })
+    })
+  },
+
+  feiShuLogin({ commit }, feiShuInfo) {
+    console.log('feiShuLogin==================', feiShuInfo)
+    return new Promise((resolve, reject) => {
+      feiShuLogin(feiShuInfo).then(response => {
+        console.log('feiShuLogin==================', response)
+        const { data } = response
+        const token = data.access
         commit('SET_TOKEN', token)
         setToken(token)
         resolve()

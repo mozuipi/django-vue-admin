@@ -4,7 +4,7 @@
 1. 基于 **django-rest-framework** + **vue2** + **element ui**
 2. 支持 **企业微信扫码登录**
 3. 支持 **钉钉扫码登录**
-4. 正在开发 **飞书扫码登录**
+4. 支持 **飞书扫码登录**
 5. 前端框架 [https://github.com/PanJiaChen/vue-admin-template/tree/permission-control](https://github.com/PanJiaChen/vue-admin-template/tree/permission-control)
 6. 开发环境
 ```

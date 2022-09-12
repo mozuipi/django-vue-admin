@@ -52,7 +52,7 @@ server {
             root   html;
             index  index.html index.htm;
             proxy_set_header  Host  $host;
- 	        proxy_set_header  Domain $scheme://$host;    # 必须！！！
+            proxy_set_header  Domain $scheme://$host;    # 必须！！！
             proxy_set_header  X-real-ip $remote_addr;
             proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_pass http://127.0.0.1:8000;

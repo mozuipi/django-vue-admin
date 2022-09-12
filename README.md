@@ -43,7 +43,7 @@ server {
 
         location / {
             root   /tmp;
-	        proxy_pass http://127.0.0.1:9528;   # 与npm run dev 后的端口保持一致
+            proxy_pass http://127.0.0.1:9528;   # 与npm run dev 后的端口保持一致
             index  index.html index.htm;
         }
 
